@@ -31,7 +31,7 @@ tags:
   - name: user
     description: Get Token and Authorize
 paths:
-  /petapedia:
+  /petasal:
     get:
       tags:
         - data
@@ -49,7 +49,7 @@ paths:
                   $ref: '#/components/schemas/Peta'
         '400':
           description: Invalid status value
-  /petapedia-post:
+  /petasal-post:
     post:
       tags:
         - auth
