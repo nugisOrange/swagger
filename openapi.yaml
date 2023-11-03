@@ -1,33 +1,33 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Cloud Function - OpenAPI 3.0
+  title: Dokumen API Cloud Function PETASAL- OpenAPI 3.0
   description: >-
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
     term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/jscroot/examples/tree/main/api/swagger
+  termsOfService: https://github.com/nugisOrange/chap06/swagger
   contact:
-    email: awangga@gmail.com
+    email: sidiqfaisal30@gmail.com
   license:
     name: Peda Package
     url: https://pkg.go.dev/github.com/petapedia/peda
   version: 1.0.11
 externalDocs:
   description: Repo GCF
-  url: https://petapedia.github.io/gcf/
+  url: https://nugisorange.github.io/gogcf
 servers:
-  - url: https://asia-southeast2-awangga.cloudfunctions.net
+  - url: url dari gcf
 tags:
   - name: data
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/get/
+      url: https://nugisorange.github.io/gogcf/get
   - name: auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/
+      url: https://nugisorange.github.io/gogcf/post
   - name: user
     description: Get Token and Authorize
 paths:
@@ -98,7 +98,7 @@ components:
       properties:
         username:
           type: string
-          example: petped
+          example: petasal
         password:
           type: string
           example: secret
@@ -110,10 +110,10 @@ components:
           example: false
         message:
           type: string
-          example: fehguy
+          example: tuycuy
         token:
           type: string
-          example: fehguy
+          example: tuycuy
   requestBodies:
     AuthReq:
       description: Request Authentication
