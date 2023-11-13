@@ -11,8 +11,11 @@ info:
   license:
     name: Package Petback
     url: https://pkg.go.dev/github.com/nugisOrange/petback
+    name: Package backendgcf
     url: https://pkg.go.dev/github.com/nugisOrange/backendgcf
+    name: Package webhook
     url: https://pkg.go.dev/github.com/nugisOrange/webhook
+    name: Package gogcf
     url: https://pkg.go.dev/github.com/nugisOrange/gogcf
   version: 1.0.11
 externalDocs:
