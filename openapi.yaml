@@ -18,11 +18,16 @@ externalDocs:
 servers:
   - url: url dari gcf
 tags:
-  - name: data
+  - name: getdata
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://nugisorange.github.io/gogcf/get
+  - name: data
+    description: Data Geo Spasial
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://nugisorange.github.io/
   - name: auth
     description: Auth to Access to API
     externalDocs:
@@ -34,7 +39,7 @@ paths:
   /petasal:
     get:
       tags:
-        - data
+        - getdata
       summary: Get Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
@@ -49,7 +54,7 @@ paths:
                   $ref: '#/components/schemas/Peta'
         '400':
           description: Invalid status value
-  /petasal-post:
+  /logindata:
     post:
       tags:
         - auth
@@ -74,6 +79,103 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+  /petasal-post:
+    get:
+      tags:
+        - data
+      summary: Get Data Geojson
+      description: Header auth 
+      operationId: GetdataGeojson
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/responseData'
+        '400':
+          description: Invalid status value
+      security:
+        - token:
+          - write:apiKey
+          - read:apiKey
+  /getdata:
+    get:
+      tags:
+        - data
+      summary: Get Data Geojson
+      description: Header auth 
+      operationId: GetdataGeojson
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/responseData'
+        '400':
+          description: Invalid status value
+      security:
+        - token:
+          - write:apiKey
+          - read:apiKey
+  /updatedata:
+    put:
+      tags:
+        - data
+      summary: Update Data Geo
+      description: Update data nama by volume 
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bodycord'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseUpdate'
+        '405':
+          description: Invalid input          
+      security:
+        - token:
+          - write:apiKey
+          - read:apiKey
+
+  /deletedata:
+    delete:
+      tags:
+        - data
+      summary: Delete Data Geo
+      description: Delete Data Geo by nama
+      operationId: DeleteData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqData'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data'
+        '400':
+          description: Invalid status value
+      security:
+        - token:
+          - write:apiKey
+          - read:apiKey
 components:
   schemas:
     Peta:
