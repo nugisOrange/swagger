@@ -78,12 +78,12 @@ paths:
             - write:apiKey
             - read:apiKey
   /updateDataGis:
-    get:
+    put:
       tags:
         - data
-      summary: Get Data Geojson
+      summary: Update Data Geojson
       description: Header auth 
-      operationId: GetdataGeojson
+      operationId: UpdateDataGeoJson
       responses:
         '200':
           description: successful operation
@@ -100,12 +100,12 @@ paths:
           - write:apiKey
           - read:apiKey
   /deleteDataGis:
-    get:
+    delete:
       tags:
         - data
-      summary: Get Data Geojson
+      summary: Delete Data Geojson
       description: Header auth 
-      operationId: GetdataGeojson
+      operationId: DeletedataGeojson
       responses:
         '200':
           description: successful operation
@@ -122,12 +122,12 @@ paths:
           - write:apiKey
           - read:apiKey
   /insertDataGis:
-    put:
+    post:
       tags:
         - data
-      summary: Update Data Geo
-      description: Update data nama by volume 
-      operationId: authService
+      summary: Post Data Geo
+      description: Post data nama by volume 
+      operationId: PostData
       requestBody:
         content:
           application/json:
