@@ -22,7 +22,7 @@ tags:
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://nugisorange.github.io/gogcf/get
+      url: https://nugisorange.github.io/petback
   - name: data
     description: Data Geo Spasial
     externalDocs:
@@ -32,7 +32,7 @@ tags:
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://nugisorange.github.io/gogcf/post
+      url: https://nugisorange.github.io/backendgcf
 paths:
   /getDataGis:
     get:
