@@ -1,22 +1,19 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Cloud Function PETASAL- OpenAPI 3.0
+  title: Dokumen API Cloud Function PETASAL Matkul GIS- OpenAPI 3.0
   description: >-
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
     term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/nugisOrange/chap06/swagger
+  termsOfService: https://github.com/nugisOrange/swagger
   contact:
     email: sidiqfaisal30@gmail.com
   license:
     name: Package Petback
     url: https://pkg.go.dev/github.com/nugisOrange/petback
+  license:
     name: Package backendgcf
     url: https://pkg.go.dev/github.com/nugisOrange/backendgcf
-    name: Package webhook
-    url: https://pkg.go.dev/github.com/nugisOrange/webhook
-    name: Package gogcf
-    url: https://pkg.go.dev/github.com/nugisOrange/gogcf
   version: 1.0.11
 externalDocs:
   description: Repo GCF
@@ -39,10 +36,8 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://nugisorange.github.io/gogcf/post
-  - name: user
-    description: Get Token and Authorize
 paths:
-  /petasal:
+  /getDataGis:
     get:
       tags:
         - getdata
@@ -60,7 +55,7 @@ paths:
                   $ref: '#/components/schemas/Peta'
         '400':
           description: Invalid status value
-  /logindata:
+  /loginGis:
     post:
       tags:
         - auth
@@ -85,7 +80,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /petasal-post:
+  /updateDataGis:
     get:
       tags:
         - data
@@ -107,7 +102,7 @@ paths:
         - token:
           - write:apiKey
           - read:apiKey
-  /getdata:
+  /deleteDataGis:
     get:
       tags:
         - data
@@ -129,7 +124,7 @@ paths:
         - token:
           - write:apiKey
           - read:apiKey
-  /updatedata:
+  /insertDataGis:
     put:
       tags:
         - data
@@ -155,33 +150,7 @@ paths:
           - write:apiKey
           - read:apiKey
 
-  /deletedata:
-    delete:
-      tags:
-        - data
-      summary: Delete Data Geo
-      description: Delete Data Geo by nama
-      operationId: DeleteData
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReqData'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Data'
-        '400':
-          description: Invalid status value
-      security:
-        - token:
-          - write:apiKey
-          - read:apiKey
+
 components:
   schemas:
     Peta:
