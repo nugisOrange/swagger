@@ -11,9 +11,6 @@ info:
   license:
     name: Package Petback
     url: https://pkg.go.dev/github.com/nugisOrange/petback
-  license:
-    name: Package backendgcf
-    url: https://pkg.go.dev/github.com/nugisOrange/backendgcf
   version: 1.0.11
 externalDocs:
   description: Repo GCF
