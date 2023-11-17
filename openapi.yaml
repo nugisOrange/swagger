@@ -228,7 +228,7 @@ paths:
   /RegisterGis:
     post:
       tags:
-        - register
+        - auth
       summary: Register User
       description: Daftar Akun User
       operationId: authService
