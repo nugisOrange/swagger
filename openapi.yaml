@@ -17,7 +17,7 @@ externalDocs:
   url: https://nugisorange.github.io/petback
   url: https://nugisorange.github.io/backendgcf
 servers:
-  - url: url dari gcf
+  - url: https://asia-southeast2-project3-403614.cloudfunctions.net/
 tags:
   - name: getdata
     description: Data Geo Spasial
@@ -28,7 +28,7 @@ tags:
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://nugisorange.github.io/
+      url: https://nugisorange.github.io/petback
   - name: auth
     description: Auth to Access to API
     externalDocs:
