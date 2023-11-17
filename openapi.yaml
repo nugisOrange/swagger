@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.0.3
 info:
   title: Dokumen API Cloud Function PETASAL - OpenAPI 3.0
   description: >-
@@ -15,15 +15,10 @@ info:
   version: 1.0.11
 externalDocs:
   description: Repo GCF
-  url: https://nugisorange.github.io/
+  url: https://nugisorange.github.io/gogcf
 servers:
   - url: https://asia-southeast2-project3-403614.cloudfunctions.net/
 tags:
-  - name: getdata
-    description: Data Geo Spasial
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://nugisorange.github.io/petback
   - name: data
     description: Data Geo Spasial
     externalDocs:
@@ -38,7 +33,7 @@ paths:
   /getDataGis:
     get:
       tags:
-        - getdata
+        - data
       summary: Get Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
@@ -147,8 +142,6 @@ paths:
         - token:
           - write:apiKey
           - read:apiKey
-
-
 components:
   schemas:
     Peta:
