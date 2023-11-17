@@ -1,3 +1,177 @@
+
+# paths:
+#   /getDataGis:
+#     get:
+#       tags:
+#         - data
+#       summary: Get Data Geospasial
+#       description: List Data Geospasial
+#       operationId: getGeoJSON
+#       responses:
+#         '200':
+#           description: successful operation
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: '#/components/schemas/Peta'
+#         '400':
+#           description: Invalid status value
+#   /loginGis:
+#     post:
+#       tags:
+#         - auth
+#       summary: Login get Token
+#       description: Login and Get User Token
+#       operationId: authService
+#       requestBody:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/Auth'
+#       responses:
+#         '200':
+#           description: successful operation
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/AuthResponse'
+#         '405':
+#           description: Invalid input
+#       security:
+#         - token:
+#             - write:apiKey
+#             - read:apiKey
+#   /updateDataGis:
+#     put:
+#       tags:
+#         - data
+#       summary: Update Data Geojson
+#       description: Header auth 
+#       operationId: UpdateDataGeoJson
+#       responses:
+#         '200':
+#           description: successful operation
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: '#/components/schemas/responseData'
+#         '400':
+#           description: Invalid status value
+#       security:
+#         - token:
+#           - write:apiKey
+#           - read:apiKey
+#   /deleteDataGis:
+#     delete:
+#       tags:
+#         - data
+#       summary: Delete Data Geojson
+#       description: Header auth 
+#       operationId: DeletedataGeojson
+#       responses:
+#         '200':
+#           description: successful operation
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: '#/components/schemas/responseData'
+#         '400':
+#           description: Invalid status value
+#       security:
+#         - token:
+#           - write:apiKey
+#           - read:apiKey
+#   /insertDataGis:
+#     post:
+#       tags:
+#         - data
+#       summary: Post Data Geo
+#       description: Post data nama by volume 
+#       operationId: PostData
+#       requestBody:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/bodycord'
+#       responses:
+#         '200':
+#           description: successful operation
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/ResponseUpdate'
+#         '405':
+#           description: Invalid input          
+#       security:
+#         - token:
+#           - write:apiKey
+#           - read:apiKey
+# components:
+#   schemas:
+#     Peta:
+#       type: object
+#       properties:
+#         type:
+#           type: string
+#         geometry:
+#           type: object
+#           properties:
+#             type: 
+#               type: string
+#             coordinates: 
+#               type: array
+#         properties:
+#           type: object
+#           properties:
+#             name:
+#               type: string
+#     Auth:
+#       type: object
+#       properties:
+#         username:
+#           type: string
+#           example: user
+#         password:
+#           type: string
+#           example: secret
+#     AuthResponse:
+#       type: object
+#       properties:
+#         status:
+#           type: bool
+#           example: false
+#         message:
+#           type: string
+#           example: tuycuy
+#         token:
+#           type: string
+#           example: tuycuy
+#   requestBodies:
+#     AuthReq:
+#       description: Request Authentication
+#       content:
+#         application/json:
+#           schema:
+#             $ref: '#/components/schemas/Auth'
+#     UserArray:
+#       description: List of user object
+#       content:
+#         application/json:
+#           schema:
+#             type: array
+#             items:
+#               $ref: '#/components/schemas/AuthResponse'
+#   securitySchemes:
+#     token:
+#       type: apiKey
+#       name: token
+#       in: header
 openapi: 3.0.3
 info:
   title: Dokumen API Cloud Function PETASAL - OpenAPI 3.0
@@ -24,30 +198,12 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://nugisorange.github.io/petback
-  - name: auth
+  - name: auth 
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://nugisorange.github.io/backendgcf
 paths:
-  /getDataGis:
-    get:
-      tags:
-        - data
-      summary: Get Data Geospasial
-      description: List Data Geospasial
-      operationId: getGeoJSON
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Peta'
-        '400':
-          description: Invalid status value
   /loginGis:
     post:
       tags:
@@ -69,61 +225,82 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /updateDataGis:
-    put:
+  /RegisterGis:
+    post:
       tags:
-        - data
-      summary: Update Data Geojson
-      description: Header auth 
-      operationId: UpdateDataGeoJson
+        - register
+      summary: Register User
+      description: Daftar Akun User
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/responseData'
-        '400':
-          description: Invalid status value
-      security:
-        - token:
-          - write:apiKey
-          - read:apiKey
-  /deleteDataGis:
-    delete:
-      tags:
-        - data
-      summary: Delete Data Geojson
-      description: Header auth 
-      operationId: DeletedataGeojson
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/responseData'
-        '400':
-          description: Invalid status value
-      security:
-        - token:
-          - write:apiKey
-          - read:apiKey
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
   /insertDataGis:
     post:
       tags:
         - data
-      summary: Post Data Geo
-      description: Post data nama by volume 
-      operationId: PostData
+      summary: Insert Data Geo
+      description: Update data nama by volume geo
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsertData'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseInsert'
+        '405':
+          description: Invalid input          
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+
+  /getDataGis:
+    get:
+      tags:
+        - data
+      summary: Get Data Geojson
+      description: Header auth 
+      operationId: GetdataGeojson
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/responseData'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+  /updateDataGis:
+    put:
+      tags:
+        - data
+      summary: Update Data Geo
+      description: Update data nama by volume 
+      operationId: authService
       requestBody:
         content:
           application/json:
@@ -139,12 +316,112 @@ paths:
         '405':
           description: Invalid input          
       security:
-        - token:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+
+  /deleteDataGis:
+    delete:
+      tags:
+        - data
+      summary: Delete Data Geo
+      description: Delete Data Geo by nama
+      operationId: DeleteData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqData'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
           - write:apiKey
           - read:apiKey
 components:
   schemas:
-    Peta:
+    user:
+      type: object
+      properties:
+        username:
+          type: string
+          example : shidiq
+        password:
+          type: string
+          example: user123
+    ResponseInsert:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: Berhasil Input Data
+    ResponseUpdate:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: Berhasil Update Data
+    Auth:
+      type: object
+      properties:
+        username:
+          type: string
+          example: shidiq
+        password:
+          type: string
+          example: user123
+    InsertData:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Point
+        name:
+          type: string
+          example: shidiq
+        volume:
+          type: string
+          example: sankuy
+    bodycord:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Point
+        name:
+          type: string
+          example: shidiq 
+        volume:
+          type: string
+          example: ahay
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        token:
+          type: string
+          example: sankuy
+        message:
+          type: string
+          example: Selamat Datang
+    responseData:
       type: object
       properties:
         type:
@@ -161,27 +438,29 @@ components:
           properties:
             name:
               type: string
-    Auth:
+    
+    ReqData:
       type: object
       properties:
-        username:
+        type:
           type: string
-          example: user
-        password:
+          example: Point
+        name:
           type: string
-          example: secret
-    AuthResponse:
+          example: shidiq 
+        volume:
+          type: string
+          example: ahay
+
+    Data:
       type: object
       properties:
         status:
           type: bool
-          example: false
+          example: true
         message:
           type: string
-          example: tuycuy
-        token:
-          type: string
-          example: tuycuy
+          example: "Berhasil menghapus data. Jumlah data terhapus:"
   requestBodies:
     AuthReq:
       description: Request Authentication
@@ -197,8 +476,18 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/AuthResponse'
+    DataArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AuthResponse'
   securitySchemes:
-    token:
+    Login:
       type: apiKey
       name: token
       in: header
+
+      
